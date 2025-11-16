@@ -8,6 +8,7 @@ from .routes import cart_router, categories_router, products_router
 
 app = FastAPI(
     title=settings.app_name,
+    debug=settings.debug,
     docs_url="/api/docs",
     redoc_url="/api/redoc",
 )
@@ -43,4 +44,3 @@ def root():
 @app.get("/health")
 def health_check():
     return {"status": "healthy"}
-    return {'status': 'healthy'}

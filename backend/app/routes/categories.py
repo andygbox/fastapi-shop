@@ -5,6 +5,8 @@ from sqlalchemy.orm import Session
 
 from ..database import get_db
 from ..schemas.category import CategoryResponse
+from ..services.category_service import CategoryService
+
 router = APIRouter(prefix="/api/categories", tags=["categories"])
 
 
@@ -17,8 +19,6 @@ def get_categories(db: Session = Depends(get_db)):
 @router.get(
     "/{category_id}", response_model=CategoryResponse, status_code=status.HTTP_200_OK
 )
-
-@router.get('/{category_id}', response_model=CategoryResponse, status_code=status.HTTP_200_OK)
 def get_category(category_id: int, db: Session = Depends(get_db)):
     service = CategoryService(db)
     return service.get_category_by_id(category_id)

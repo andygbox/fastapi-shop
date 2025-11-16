@@ -1,10 +1,10 @@
-from typing import List
-
 from fastapi import HTTPException, status
 from sqlalchemy.orm import Session
 
 from ..repositories.category_repository import CategoryRepository
 from ..repositories.product_repository import ProductRepository
+from ..schemas.product import ProductCreate, ProductListResponse, ProductResponse
+
 
 class ProductService:
     def __init__(self, db: Session):
@@ -47,9 +47,6 @@ class ProductService:
             raise HTTPException(
                 status_code=status.HTTP_400_BAD_REQUEST,
                 detail=f"Category with id {product_data.category_id} does not exist",
-            raise HTTPException(
-                status_code=status.HTTP_400_BAD_REQUEST,
-                detail=f"Category with id {product_data.category_id} does not exist"
             )
 
         product = self.product_repository.create(product_data)

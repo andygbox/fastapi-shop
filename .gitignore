@@ -1,0 +1,10 @@
+__pycache__/
+.env
+.venv
+db.sqlite3
+readme.txt
+*.db
+
+logs
+*.log
+seed_data*
